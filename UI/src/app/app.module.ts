@@ -14,13 +14,15 @@ import { NavComponent } from './common/component/nav/nav.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './common/component/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { ForgotComponent } from './components/forgot/forgot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
