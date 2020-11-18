@@ -1,11 +1,13 @@
-.navbar-light .navbar-brand,.navbar-light .navbar-nav .active > .nav-link,.navbar-light .navbar-nav .nav-link {
-    color: white;
+.dropdown-menu {
+    left: auto;
+    right: 0px;
 }
-.navbar-light .navbar-nav .active > .nav-link
-{
-    font-weight: bold;
+img{
+    height: 29px;
 }
-.bg-light {
-    background-color: #02020269 !important;
-    z-index: 100;
+.navbar{
+    background-color: #d39e00;
+}
+.dropdown-item{
+    cursor: pointer;
 }
