@@ -2,7 +2,7 @@
     width: 150px;
     vertical-align: middle;
     border-style: none;
-    margin-left: 25%;
+    margin-left: calc(350px - 132px);
     margin-bottom: 40px;
 }
 #container {
@@ -11,7 +11,7 @@
     height: 100vh;
 }
 #formcontainer {
-    width: 450px;
+    width: 700px;
     height: 550px;
     border-radius: 10px;
     overflow: hidden;
@@ -36,8 +36,7 @@
     color: white;
 }
 
-#email,
-#password {
+.input-fields{
     width: 100%;
     height: 1px;
     border-width: 1px;
@@ -49,13 +48,11 @@
     border-bottom: solid 2px #ebaaaa;
     background: transparent;
 }
-#email::placeholder,
-#password::placeholder {
+.input-fields::placeholder {
     color: white;
 }
 
-#email:focus,
-#password:focus {
+.input-fields:focus {
     box-shadow: 0 0 10px #ebaaaa;
     outline: 0;
 }
@@ -72,7 +69,7 @@
     cursor: pointer;
 }
 
-#genrate {
+#register {
     width: 50%;
     margin-left: 25%;
     height: 40px;
@@ -86,7 +83,7 @@
     transition: all 0.4s;
 }
 
-#genrate:hover {
+#register:hover {
     background: -webkit-linear-gradient(bottom, #fbc01a, #e67e22);
     color: white;
 }

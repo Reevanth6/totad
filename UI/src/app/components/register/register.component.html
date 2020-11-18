@@ -1,0 +1,147 @@
+<div id="container">
+  <div id="formcontainer">
+    <img class="img-logo" src="assets/images/Myntra_logo.png" />
+    <p id="text">REGISTER</p>
+    <form [formGroup]="loginForm" (submit)="signUp()">
+      <div class="row">
+        <div class="col-6 row">
+          <div class="col-2">
+            <i class="fa fa-user-circle-o"></i>
+          </div>
+          <div class="col-10">
+            <input
+            class="input-fields"
+              id="name"
+              type="text"
+              formControlName="name"
+              [ngClass]="{ invalid: submitted && loginForm.name.errors }"
+              placeholder="Full Name"
+            />
+            <div
+              *ngIf="false && submitted && loginForm.name.errors"
+              class="error-text"
+            >
+              <small *ngIf="loginForm.name.errors.required">Full Name</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 row">
+          <div class="col-2">
+            <i class="fa fa-envelope"></i>
+          </div>
+          <div class="col-10">
+            <input
+            class="input-fields"
+              id="email"
+              type="email"
+              type="tel"
+              formControlName="email"
+              [ngClass]="{ invalid: submitted && loginForm.email.errors }"
+              placeholder="Email"
+            />
+            <div
+              *ngIf="false && submitted && loginForm.email.errors"
+              class="error-text"
+            >
+              <small *ngIf="loginForm.email.errors.required">Email</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <i class="fa fa-lock"></i>
+        </div>
+        <div class="col-11">
+          <input
+          class="input-fields"
+            id="password"
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            [ngClass]="{ invalid: submitted && loginForm.password.errors }"
+          />
+          <div
+            *ngIf="false && submitted && loginForm.password.errors"
+            class="error-text"
+          >
+            <small *ngIf="loginForm.password.errors.required"
+              >Password is required</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 row">
+          <div class="col-2">
+            <i class="fa fa-id-card-o"></i>
+          </div>
+          <div class="col-10">
+            <input
+            class="input-fields"
+              id="employeeId"
+              type="text"
+              formControlName="employeeId"
+              [ngClass]="{ invalid: submitted && loginForm.employeeId.errors }"
+              placeholder="Employee ID"
+            />
+            <div
+              *ngIf="false && submitted && loginForm.employeeId.errors"
+              class="error-text"
+            >
+              <small *ngIf="loginForm.employeeId.errors.required">Employee ID</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 row">
+          <div class="col-2">
+            <i class="fa fa-mobile"></i>
+          </div>
+          <div class="col-10">
+            <input
+            class="input-fields"
+              id="phone"
+              type="phone"
+              type="tel"
+              formControlName="phone"
+              [ngClass]="{ invalid: submitted && loginForm.phone.errors }"
+              placeholder="Phone Number"
+            />
+            <div
+              *ngIf="false && submitted && loginForm.phone.errors"
+              class="error-text"
+            >
+              <small *ngIf="loginForm.phone.errors.required">Phone Number</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <i class="fa fa-building"></i>
+        </div>
+        <div class="col-11">
+          <input
+          class="input-fields"
+            id="location"
+            type="location"
+            placeholder="Location"
+            formControlName="location"
+            [ngClass]="{ invalid: submitted && loginForm.location.errors }"
+          />
+          <div
+            *ngIf="false && submitted && loginForm.location.errors"
+            class="error-text"
+          >
+            <small *ngIf="loginForm.location.errors.required"
+              >Location</small
+            >
+          </div>
+        </div>
+      </div>
+      <button id="register" type="submit">Register</button>
+    </form>
+    <!-- <div  routerLink="/forgot-password" id="signup">Forgot Password ?</div> -->
+    <div routerLink="/" id="login">Login</div>
+  </div>
+</div>

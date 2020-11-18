@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './common/component/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ForgotComponent } from './components/forgot/forgot.component';
     NavComponent,
     FooterComponent,
     LoginComponent,
-    ForgotComponent
+    ForgotComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
