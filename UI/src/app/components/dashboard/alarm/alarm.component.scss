@@ -1,0 +1,33 @@
+.header{
+    background-color: #5b48a9;
+    width: 100%;
+}
+.mt-1, .my-1 {
+    margin-top: 0.25rem !important;
+}
+.mb-1, .my-1 {
+    margin-bottom: 0.25rem !important;
+}
+button:focus {
+    outline: none;
+}
+button{
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+}
+.delete-button{
+    border-radius: 6px;
+    background-color: red;
+}
+.add-button{
+    border-radius: 6px;
+    background-color: green;
+}
+.button{
+    padding: 1px 10px;
+    color: white;
+}
+.white{
+    color: white;
+}

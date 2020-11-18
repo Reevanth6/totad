@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { UtilityService } from './common/utility.service';
 
@@ -17,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AlarmComponent } from './components/dashboard/alarm/alarm.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     ForgotComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AlarmComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule.withComponents(null)
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
