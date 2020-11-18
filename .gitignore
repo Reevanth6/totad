@@ -1,0 +1,10 @@
+bin
+obj
+.vscode
+.DS_Store
+appsettings.json
+*.db
+.vs
+node_modules
+e2e
+templates

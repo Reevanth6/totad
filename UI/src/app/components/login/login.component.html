@@ -1,0 +1,33 @@
+<div id="container">
+  <div id="formcontainer">
+    <img class="img-logo" src="assets/images/Myntra_logo.png">
+    <p id="text">LOG IN</p>
+    <form [formGroup]="loginForm" (submit)="login()">
+      <div class="row">
+        <div class="col-1">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="col-11">
+          <input id="email" type="email" type="tel" formControlName="email" [ngClass]="{'invalid': submitted && loginForm.email.errors}" placeholder="Email" />
+          <div *ngIf="false && submitted && loginForm.email.errors" class="error-text">
+              <small *ngIf="loginForm.email.errors.required">Email</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <i class="fa fa-lock"></i>
+        </div>
+        <div class="col-11">
+          <input id="password" type="password" placeholder="Password"  formControlName="password" [ngClass]="{'invalid': submitted && loginForm.password.errors}" />
+          <div *ngIf="false && submitted && loginForm.password.errors" class="error-text">
+              <small *ngIf="loginForm.password.errors.required">Password is required</small>
+          </div>
+        </div>
+      </div>
+      <button id="login" type="submit">Log In</button>
+    </form>
+    <div id="forget">Forget Password ?</div>
+    <div id="signup">Create Admin Account</div>
+  </div>
+</div>
