@@ -4,10 +4,10 @@
       <p id="text">FORGOT PASSWORD</p>
       <form [formGroup]="loginForm" (submit)="genratePassword()">
         <div class="row">
-          <div class="col-1">
+          <div class="col-md-1 col-2">
             <i class="fa fa-user"></i>
           </div>
-          <div class="col-11">
+          <div class="col-md-11 col-10">
             <input id="email" type="email" type="tel" formControlName="email" [ngClass]="{'invalid': submitted && loginForm.email.errors}" placeholder="Email" />
             <div *ngIf="false && submitted && loginForm.email.errors" class="error-text">
                 <small *ngIf="loginForm.email.errors.required">Email</small>

@@ -9,6 +9,8 @@
     background-image: url("https://images.pexels.com/photos/1363876/pexels-photo-1363876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     width: 100%;
     height: 100vh;
+    position: fixed;
+    overflow: auto;
 }
 #formcontainer {
     width: 450px;
@@ -116,6 +118,23 @@
 input:-internal-autofill-selected {
     background-color: none !important;
 }
+
+@media only screen and (max-width: 600px) {
+    #container,#formcontainer {
+        width: 100vw !important;
+        top: 0px;
+        position: relative;
+        height: 100vh !important;
+        overflow-y: auto;
+    }
+    .img-logo{
+        margin-left: calc(50vw - 132px);
+    }
+    #genrate {
+        width: 100%;
+        margin-left: 0%;
+    }
+  }
 
 // @media only screen and (max-width:830px) {
 //     #formcontainer {

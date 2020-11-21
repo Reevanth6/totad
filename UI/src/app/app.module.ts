@@ -19,6 +19,7 @@ import { ForgotComponent } from './components/forgot/forgot.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AlarmComponent } from './components/dashboard/alarm/alarm.component';
+import { AlarmFormComponent } from './components/dashboard/alarm/alarm-form/alarm-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AlarmComponent } from './components/dashboard/alarm/alarm.component';
     ForgotComponent,
     RegisterComponent,
     DashboardComponent,
-    AlarmComponent
+    AlarmComponent,
+    AlarmFormComponent
   ],
   imports: [
     BrowserModule,

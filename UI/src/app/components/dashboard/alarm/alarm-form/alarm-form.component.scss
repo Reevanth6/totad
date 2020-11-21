@@ -1,0 +1,47 @@
+.outer-container{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    background: #808080a6;
+}
+
+.container{
+    background: white;
+    height: calc(100vh - 50px);
+    position: relative;
+    top: 25px;
+}
+
+.header{
+    padding: 15px 5px;
+    border-bottom: 3px solid #80808042;
+    background: #c0cd3c33;
+    font-size: 20px;
+}
+
+.body{
+    overflow-y: scroll;
+    height: calc(100% - 64px);
+}
+
+form{
+    width: 100%;
+}
+
+.custom-range{
+    width: calc(100% - 45px);
+    float: left;
+}
+
+.valueSpan{
+    float: left;
+    width: 20px;
+}
+
+.form-group>.custom-file{
+    width: calc(100% - 100px);
+}
+.input-group-text{
+    width: 75px;
+}

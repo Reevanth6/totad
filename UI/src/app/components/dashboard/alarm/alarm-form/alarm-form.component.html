@@ -1,0 +1,145 @@
+<div class="outer-container">
+    <div class="container">
+        <div class="row header"><div class="col-12"><b>{{type}} Alarm</b></div></div>
+        <div class="row p-3 body">
+            <form>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="device">Device Name</label>
+                          <select id="device" class="custom-select form-control">
+                            <option value="0" selected>Device Name</option>
+                            <option value="1">Device1</option>
+                            <option value="2">Device2</option>
+                            <option value="3">Device3</option>
+                          </select>
+                          <!-- <input type="text" class="form-control" id="device" placeholder="Device Name"> -->
+                        </div>
+                    </div>  
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="language">Language</label>
+                          <select id="language" class="custom-select form-control">
+                            <option value="0" selected>Language</option>
+                            <option value="1">English</option>
+                            <option value="2">Spanish</option>
+                            <option value="3">French</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="daily">Daily Alarm?</label>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="daily_yes" name="daily" class="custom-control-input">
+                            <label class="custom-control-label" for="daily_yes">Yes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="daily_no" name="daily" class="custom-control-input">
+                            <label class="custom-control-label" for="daily_no">No</label>
+                          </div>
+                        </div>
+                    </div>  
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="enable">Enable Alarm?</label>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="enable_yes" name="enable" class="custom-control-input">
+                            <label class="custom-control-label" for="enable_yes">Yes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="enable_no" name="enable" class="custom-control-input">
+                            <label class="custom-control-label" for="enable_no">No</label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="date">Date</label>
+                          <input type="text" class="form-control" id="date" placeholder="Device Name">
+                        </div>
+                    </div>  
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="clock">Clock Time</label>
+                          <input type="text" class="form-control" id="clock" placeholder="Device Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="alarm_text">Alarm Text(OPTIONAL)</label>
+                          <textarea class="form-control" id="alarm_text" rows="3"></textarea>
+                        </div>
+                    </div> 
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="repetition">No. of Repetition Announcements</label>
+                          <input type="number" class="form-control" id="repetition">
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="volume">Volume</label>
+                          <input type="range" class="custom-range" min="0" max="100" step="0.5" id="volume">
+                          <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan">100</span>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="upload">Upload voice (OPTIONAL): MAX-SIZE: 4MB LIMIT</label>
+                          <div class="custom-file float-left">
+                            <input type="file" class="custom-file-input" id="upload">
+                            <label class="custom-file-label" for="upload" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                          </div>
+                          <span class="input-group-text float-left" id="upload">Upload</span>
+                          <!-- <input type="text" class="form-control" id="upload" placeholder="Device Name"> -->
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="url">Play Music via URL(OPTIONAL)</label>
+                          <input type="text" class="form-control" id="url" placeholder="URL">
+                        </div>
+                    </div>  
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="play_time">How much time music needs to play?(In Mins)(OPTIONAL)</label>
+                          <input type="number" class="form-control" id="play_time">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col">
+                        <div class="form-group">
+                          <label for="anouncement">Live Anouncement(OPTIONAL)</label>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="anouncement_yes" name="anouncement" class="custom-control-input">
+                            <label class="custom-control-label" for="anouncement_yes">Yes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="anouncement_no" name="anouncement" class="custom-control-input">
+                            <label class="custom-control-label" for="anouncement_no">No</label>
+                          </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="float-right">
+                    <button type="button" class="btn btn-secondary mr-2" (click)="closePopup()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
