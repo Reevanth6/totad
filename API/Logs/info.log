@@ -1,0 +1,5 @@
+UTC: 2020-11-24 02:43:41,586 - Date:2020-11-24 08:13:41,586- Microsoft.Hosting.Lifetime.? [?] INFO::Now listening on: https://localhost:5001
+UTC: 2020-11-24 02:43:41,600 - Date:2020-11-24 08:13:41,600- Microsoft.Hosting.Lifetime.? [?] INFO::Now listening on: http://localhost:5000
+UTC: 2020-11-24 02:43:41,600 - Date:2020-11-24 08:13:41,600- Microsoft.Hosting.Lifetime.? [?] INFO::Application started. Press Ctrl+C to shut down.
+UTC: 2020-11-24 02:43:41,601 - Date:2020-11-24 08:13:41,601- Microsoft.Hosting.Lifetime.? [?] INFO::Hosting environment: Development
+UTC: 2020-11-24 02:43:41,601 - Date:2020-11-24 08:13:41,601- Microsoft.Hosting.Lifetime.? [?] INFO::Content root path: C:\workspace\totad\API
