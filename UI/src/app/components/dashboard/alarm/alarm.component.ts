@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlarmService } from 'src/app/service/alarm.service';
 
 @Component({
   selector: 'app-alarm',
@@ -10,7 +11,8 @@ export class AlarmComponent implements OnInit {
   public rowData: any[] = [];
   public type: string;
 
-  constructor() { }
+
+  constructor(public alarmService:AlarmService) { }
 
   ngOnInit(): void {
     this.columnDefs = [
@@ -28,7 +30,7 @@ export class AlarmComponent implements OnInit {
       {headerName: 'Duplicate', width: 90, resizable: true, cellRenderer: (data) => {
         return `<i class="fa fa-copy cursor-pointer" (click)='duplicate(data.data.id)'></i>`;
     }},
-      {headerName: 'Delete', width: 70, resizable: true, 
+      {headerName: 'Delete', width: 70, resizable: true,
       // cellRenderer: (data) => {
       //   return `<i class="fa fa-trash cursor-pointer" (click)='delete(data.data.id)'></i>`;},
      cellRendererParams: { onClick: this.delete.bind(this),label:'click' }}

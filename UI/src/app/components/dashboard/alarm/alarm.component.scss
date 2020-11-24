@@ -40,7 +40,7 @@ table {
     font-size: 12px;
     line-height: normal;
     font-weight: 600;
-    width: 100%; 
+    width: 100%;
     max-height: calc(100vh - 150px);
 }
 thead{
@@ -67,4 +67,7 @@ tr{
 }
 .min-w-165{
     min-width: 165px;
+}
+.fs-6{
+  font-size: .6rem;
 }

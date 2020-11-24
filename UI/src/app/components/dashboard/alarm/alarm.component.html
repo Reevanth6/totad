@@ -6,17 +6,20 @@
         <i class="fa fa-plus pr-1"></i>
         <button class="white add-button">Add New Alarm</button>
       </div>
-      <div class="button float-right delete-button text-right mr-2 cursor-pointer" (click)="deleteAll()">
+      <!-- <div class="button float-right delete-button text-right mr-2 cursor-pointer" (click)="deleteAll()">
         <i class="fa fa-trash pr-1"></i>
         <button class="white delete-button">Delete All Alarms</button>
+      </div> -->
+      <div class="float-right mr-2">
+        <input type="text" class="form-control fs-6" id="ip" [(ngModel)]="alarmService.ip" placeholder="IP">
       </div>
     </div>
   </div>
-  <!-- <ag-grid-angular 
-    style="width: 100%; height: calc(100vh - 150px);" 
+  <!-- <ag-grid-angular
+    style="width: 100%; height: calc(100vh - 150px);"
     [pagination]="true"
     class="ag-theme-balham"
-    [rowData]="rowData" 
+    [rowData]="rowData"
     [columnDefs]="columnDefs">
 </ag-grid-angular> -->
 
@@ -32,9 +35,9 @@
           <th class="min-w-135" scope="col">Current Volume Set</th>
           <th class="min-w-165" scope="col">Number of Times to Play</th>
           <th scope="col">Status</th>
-          <th scope="col">Edit</th>
+          <!-- <th scope="col">Edit</th>
           <th scope="col">Duplicate</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Delete</th> -->
         </tr>
       </thead>
       <tbody>
@@ -48,11 +51,11 @@
           <td>{{ data.volume }}</td>
           <td>{{ data.playCount }}</td>
           <td>{{ data.status }}</td>
-          <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td>
+          <!-- <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td>
           <td class="text-center">
             <i class="fa fa-copy cursor-pointer" (click)="duplicate(data.id)"></i>
           </td>
-          <td class="text-center"><i class="fa fa-trash cursor-pointer" (click)="delete(data.id)"></i></td>
+          <td class="text-center"><i class="fa fa-trash cursor-pointer" (click)="delete(data.id)"></i></td> -->
         </tr>
       </tbody>
     </table>

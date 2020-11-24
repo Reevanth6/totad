@@ -21,6 +21,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AlarmComponent } from './components/dashboard/alarm/alarm.component';
 import { AlarmFormComponent } from './components/dashboard/alarm/alarm-form/alarm-form.component';
 
+import { AlarmService } from './service/alarm.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,8 @@ import { AlarmFormComponent } from './components/dashboard/alarm/alarm-form/alar
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    UtilityService
+    UtilityService,
+    AlarmService
   ],
   bootstrap: [AppComponent]
 })
