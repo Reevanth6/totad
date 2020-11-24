@@ -30,6 +30,7 @@ namespace API
             var conString = Configuration.GetConnectionString("core_connection");
             services.AddDbContext<CoreDBContext>(opt =>
             {
+                // opt.UseLazyLoadingProxies().UseSqlServer(conString);
                 opt.UseSqlite(conString);
             });
             services.AddSwaggerGen(c => {
