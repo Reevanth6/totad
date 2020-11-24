@@ -32,6 +32,45 @@ namespace API
             {
                 opt.UseSqlite(conString);
             });
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1"});
+                // var securitySchema = new OpenApiSecurityScheme{
+                //     Description = "JWT Auth Bearer Schema",
+                //     Name = "Authorization",
+                //     In = ParameterLocation.Header,
+                //     Type = SecuritySchemeType.Http,
+                //     Scheme = "bearer",
+                //     Reference = new OpenApiReference
+                //     {
+                //         Type = ReferenceType.SecurityScheme,
+                //         Id = "Bearer"
+                //     };
+                //     c.AddSecurityDefinition("Bearer", securitySchema);
+                //     var securityRequirement = new OpenApiSecurityRequirement{ { securitySchema, new[] {'Bearer'}}};
+                //     c.AddSecurityRequirement(securityRequirement);
+                //     c.ResolveConflictAction(desc => desc.First());
+                // }
+                // // c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
+                // //     In = ParameterLocation.Header, 
+                // //     Description = "Please insert JWT with Bearer into field",
+                // //     Name = "Authorization",
+                // //     Type = SecuritySchemeType.ApiKey 
+                // // });
+                // // c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                // // { 
+                // //     new OpenApiSecurityScheme 
+                // //     { 
+                // //     Reference = new OpenApiReference 
+                // //     { 
+                // //         Type = ReferenceType.SecurityScheme,
+                // //         Id = "Bearer" 
+                // //     } 
+                // //     },
+                // //     new string[] { } 
+                // //     } 
+                // // });
+            });
+
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
@@ -56,6 +95,9 @@ namespace API
             app.UseAuthorization();
             
             app.UseCors("CorsPolicy");
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json","API v1"); });
 
             app.UseEndpoints(endpoints =>
             {
