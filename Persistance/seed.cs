@@ -7,7 +7,7 @@ namespace Persistance
 {
     public class Seed
     {
-        public static void Seeddata(ResortDBContext context)
+        public static void Seeddata(CoreDBContext context)
         {
             // if (!context.Activities.Any())
             // {

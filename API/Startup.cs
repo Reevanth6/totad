@@ -28,7 +28,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             var conString = Configuration.GetConnectionString("resort_connection");
-            services.AddDbContext<ResortDBContext>(opt =>
+            services.AddDbContext<CoreDBContext>(opt =>
             {
                 opt.UseSqlite(conString);
             });

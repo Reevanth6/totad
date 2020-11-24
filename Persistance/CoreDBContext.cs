@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistance
 {
-    public class ResortDBContext : DbContext
+    public class CoreDBContext : DbContext
     {
-        public ResortDBContext(DbContextOptions options) : base(options)
+        public CoreDBContext(DbContextOptions options) : base(options)
         {
         }
 
