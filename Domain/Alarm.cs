@@ -2,9 +2,8 @@ using System;
 
 namespace Domain
 {
-    public class Alarm
+    public class Alarm : IdentityObjectBase
     {
-        public int ID { get; set; }
         public string DeviceName { get; set; }
         public string Language { get; set; }
         public bool Daily { get; set; }

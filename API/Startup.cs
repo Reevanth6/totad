@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Persistance;
+using App;
+using App.Interface;
 
 namespace API
 {
@@ -33,6 +35,12 @@ namespace API
                 // opt.UseLazyLoadingProxies().UseSqlServer(conString);
                 opt.UseSqlite(conString);
             });
+
+            services.AddScoped<ICoreDBContext,CoreDBContext>();
+            services.AddScoped<IUserApp,UserApp>();
+            services.AddScoped<IAlarmApp, AlarmApp>();
+
+
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1"});
                 // var securitySchema = new OpenApiSecurityScheme{
