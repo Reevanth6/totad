@@ -99,6 +99,8 @@ namespace API
             }
 
             //app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseDefaultFiles();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -111,6 +113,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }
