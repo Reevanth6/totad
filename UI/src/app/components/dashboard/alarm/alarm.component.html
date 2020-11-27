@@ -11,7 +11,7 @@
         <button class="white delete-button">Delete All Alarms</button>
       </div> -->
       <div class="float-right mr-2">
-        <input type="text" class="form-control fs-6" id="ip" [(ngModel)]="alarmService.ip" placeholder="IP">
+        <input type="text" class="form-control fs-6" id="ip" [(ngModel)]="alarmService.ip" placeholder="IP" (mouseout)="updateIp()">
       </div>
     </div>
   </div>
@@ -43,14 +43,14 @@
       <tbody>
         <tr *ngFor="let data of rowData">
           <!-- <td scope="row">1</td> -->
-          <td scope="row">{{ data.textData }}</td>
-          <td>{{ data.daily }}</td>
+          <td scope="row">{{ data.text }}</td>
+          <td>{{ data.daily ? 'True' : 'False' }}</td>
           <td>{{ data.date }}</td>
           <td>{{ data.time }}</td>
-          <td>{{ data.device }}</td>
+          <td>{{ data.deviceName }}</td>
           <td>{{ data.volume }}</td>
-          <td>{{ data.playCount }}</td>
-          <td>{{ data.status }}</td>
+          <td>{{ data.count }}</td>
+          <td>True</td>
           <!-- <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td>
           <td class="text-center">
             <i class="fa fa-copy cursor-pointer" (click)="duplicate(data.id)"></i>
@@ -61,4 +61,4 @@
     </table>
   </div>
 </div>
-<app-alarm-form *ngIf="type && type.trim() != ''" [type]="type" (close)="closePopup()" (submit)="save()"></app-alarm-form>
+<app-alarm-form *ngIf="type && type.trim() != ''" [type]="type" (close)="closePopup()"></app-alarm-form>

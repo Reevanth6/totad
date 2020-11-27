@@ -13,6 +13,9 @@
                             <option value="Device2">Device2</option>
                             <option value="Device3">Device3</option>
                           </select>
+                          <div *ngIf="submitted && invalid.device" class="error-text">
+                            <small>Device is Required</small>
+                        </div>
                           <!-- <input type="text" class="form-control" id="device" placeholder="Device Name"> -->
                         </div>
                     </div>
@@ -25,6 +28,9 @@
                             <option value="Spanish">Spanish</option>
                             <option value="French">French</option>
                           </select>
+                          <div *ngIf="submitted && invalid.language" class="error-text">
+                            <small>Language is Required</small>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -40,6 +46,9 @@
                             <input type="radio" id="daily_no" name="daily" [(ngModel)]="daily" value="no" [ngModelOptions]="{standalone: true}" class="custom-control-input">
                             <label class="custom-control-label" for="daily_no">No</label>
                           </div>
+                          <div *ngIf="submitted && invalid.daily" class="error-text">
+                            <small>Daily alarm should be selected</small>
+                          </div>
                         </div>
                     </div>
                     <div class="col">
@@ -53,6 +62,9 @@
                             <input type="radio" id="enable_no" name="enable" [(ngModel)]="enable" value="no"  [ngModelOptions]="{standalone: true}" class="custom-control-input">
                             <label class="custom-control-label" for="enable_no">No</label>
                           </div>
+                          <div *ngIf="submitted && invalid.enable" class="error-text">
+                            <small>Choose enable options</small>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -60,14 +72,24 @@
                     <div class="col">
                         <div class="form-group">
                           <label for="date">Date</label>
-                          <input type="text" class="form-control" id="date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" placeholder="Device Name">
+                          <input type="date" class="form-control" [ngModel] ="date | date:'yyyy-MM-dd'" (ngModelChange)="date = $event;" [ngModelOptions]="{standalone: true}">
+                          <!-- <input type="text" class="form-control" id="date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" placeholder="Device Name"> -->
                         </div>
+
+                          <div *ngIf="submitted && invalid.date" class="error-text">
+                            <small>Provide date</small>
+                          </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                           <label for="clock">Clock Time</label>
-                          <input type="text" class="form-control" id="clock" [(ngModel)]="time" [ngModelOptions]="{standalone: true}" placeholder="Device Name">
+                          <!-- <input type="time"  [(ngModel)]="time"> -->
+                          <input type="time" class="form-control" [(ngModel)] ="time" [ngModelOptions]="{standalone: true}">
+                          <!-- <input type="text" class="form-control" id="clock" [(ngModel)]="time" [ngModelOptions]="{standalone: true}" placeholder="Device Name"> -->
                         </div>
+                          <div *ngIf="submitted && invalid.time" class="error-text">
+                            <small>Provide time</small>
+                          </div>
                     </div>
                 </div>
                 <div class="row">
@@ -82,15 +104,21 @@
                           <label for="repetition">No. of Repetition Announcements</label>
                           <input type="number" class="form-control" [(ngModel)]="repetition" [ngModelOptions]="{standalone: true}" id="repetition">
                         </div>
+                          <div *ngIf="submitted && invalid.repetition" class="error-text">
+                            <small>Repetition is required</small>
+                          </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="volume">Volume</label>
-                          <input type="range" class="custom-range" min="0" max="100" step="0.5" [(ngModel)]="volume" [ngModelOptions]="{standalone: true}" id="volume">
+                          <input type="range" class="custom-range" min="0" max="100" step="1" [(ngModel)]="volume" [ngModelOptions]="{standalone: true}" id="volume">
                           <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan">{{volume}}</span>
                         </div>
+                          <div *ngIf="submitted && invalid.volume" class="error-text">
+                            <small>Volume can not be 0</small>
+                          </div>
                     </div>
                 </div>
                 <div class="row">

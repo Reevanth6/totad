@@ -2,22 +2,18 @@
     <div id="formcontainer">
       <img class="img-logo" src="assets/images/Myntra_logo.png">
       <p id="text">FORGOT PASSWORD</p>
-      <form [formGroup]="loginForm" (submit)="genratePassword()">
+      <form>
         <div class="row">
           <div class="col-md-1 col-2">
             <i class="fa fa-user"></i>
           </div>
           <div class="col-md-11 col-10">
-            <input id="email" type="email" type="tel" formControlName="email" [ngClass]="{'invalid': submitted && loginForm.email.errors}" placeholder="Email" />
-            <div *ngIf="false && submitted && loginForm.email.errors" class="error-text">
-                <small *ngIf="loginForm.email.errors.required">Email</small>
-            </div>
+            <input id="email" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email" />
           </div>
         </div>
-        <button id="genrate" type="submit">Send Reset Mail</button>
+        <button id="genrate" type="submit" (click)="genratePassword()">Send Reset Mail</button>
       </form>
       <div  routerLink="/" id="login">Login</div>
       <div  routerLink="/sign-up" id="signup">Create Admin Account</div>
     </div>
   </div>
-  

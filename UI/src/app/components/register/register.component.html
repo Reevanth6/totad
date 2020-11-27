@@ -2,7 +2,7 @@
   <div id="formcontainer">
     <img class="img-logo" src="assets/images/Myntra_logo.png" />
     <p id="text">REGISTER</p>
-    <form [formGroup]="loginForm" (submit)="signUp()">
+    <form>
       <div class="row">
         <div class="col-md-6 col-sm-12 row">
           <div class="col-2">
@@ -13,15 +13,15 @@
             class="input-fields"
               id="name"
               type="text"
-              formControlName="name"
-              [ngClass]="{ invalid: submitted && loginForm.name.errors }"
+              [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}"
+              [ngClass]="{ invalid: submitted && invalid.name }"
               placeholder="Full Name"
             />
             <div
-              *ngIf="false && submitted && loginForm.name.errors"
+              *ngIf="submitted && invalid.name"
               class="error-text"
             >
-              <small *ngIf="loginForm.name.errors.required">Full Name</small>
+              <small *ngIf="invalid.name">Full Name is required.</small>
             </div>
           </div>
         </div>
@@ -34,16 +34,16 @@
             class="input-fields"
               id="email"
               type="email"
-              type="tel"
-              formControlName="email"
-              [ngClass]="{ invalid: submitted && loginForm.email.errors }"
+              [(ngModel)]="user.emailAddress" [ngModelOptions]="{standalone: true}"
+              [ngClass]="{ invalid: submitted && (invalid.email || invalid.emailEmpty) }"
               placeholder="Email"
             />
             <div
-              *ngIf="false && submitted && loginForm.email.errors"
+              *ngIf="submitted && (invalid.email || invalid.emailEmpty)"
               class="error-text"
             >
-              <small *ngIf="loginForm.email.errors.required">Email</small>
+              <small *ngIf="invalid.emailEmpty">Email is required</small>
+              <small *ngIf="!invalid.emailEmpty && invalid.email">Email in invalid</small>
             </div>
           </div>
         </div>
@@ -58,14 +58,14 @@
             id="password"
             type="password"
             placeholder="Password"
-            formControlName="password"
-            [ngClass]="{ invalid: submitted && loginForm.password.errors }"
+            [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"
+            [ngClass]="{ invalid: submitted && invalid.password }"
           />
           <div
-            *ngIf="false && submitted && loginForm.password.errors"
+            *ngIf="submitted && invalid.password"
             class="error-text"
           >
-            <small *ngIf="loginForm.password.errors.required"
+            <small *ngIf="invalid.password"
               >Password is required</small
             >
           </div>
@@ -80,17 +80,10 @@
             <input
             class="input-fields"
               id="employeeId"
-              type="text"
-              formControlName="employeeId"
-              [ngClass]="{ invalid: submitted && loginForm.employeeId.errors }"
+              type="number"
+              [(ngModel)]="user.employeeID" [ngModelOptions]="{standalone: true}"
               placeholder="Employee ID"
             />
-            <div
-              *ngIf="false && submitted && loginForm.employeeId.errors"
-              class="error-text"
-            >
-              <small *ngIf="loginForm.employeeId.errors.required">Employee ID</small>
-            </div>
           </div>
         </div>
         <div class="col-md-6 col-sm-12 row">
@@ -101,18 +94,10 @@
             <input
             class="input-fields"
               id="phone"
-              type="phone"
-              type="tel"
-              formControlName="phone"
-              [ngClass]="{ invalid: submitted && loginForm.phone.errors }"
+              type="number"
+              [(ngModel)]="user.phone" [ngModelOptions]="{standalone: true}"
               placeholder="Phone Number"
             />
-            <div
-              *ngIf="false && submitted && loginForm.phone.errors"
-              class="error-text"
-            >
-              <small *ngIf="loginForm.phone.errors.required">Phone Number</small>
-            </div>
           </div>
         </div>
       </div>
@@ -126,20 +111,11 @@
             id="location"
             type="location"
             placeholder="Location"
-            formControlName="location"
-            [ngClass]="{ invalid: submitted && loginForm.location.errors }"
+            [(ngModel)]="user.location" [ngModelOptions]="{standalone: true}"
           />
-          <div
-            *ngIf="false && submitted && loginForm.location.errors"
-            class="error-text"
-          >
-            <small *ngIf="loginForm.location.errors.required"
-              >Location</small
-            >
-          </div>
         </div>
       </div>
-      <button id="register" type="submit">Register</button>
+      <button id="register" type="submit" (click)="signUp()">Register</button>
     </form>
     <!-- <div  routerLink="/forgot-password" id="signup">Forgot Password ?</div> -->
     <div routerLink="/" id="login">Login</div>

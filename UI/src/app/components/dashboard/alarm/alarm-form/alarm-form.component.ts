@@ -10,7 +10,6 @@ import { AlarmService } from 'src/app/service/alarm.service';
 export class AlarmFormComponent implements OnInit {
   @Input() type: string;
   @Output() close = new EventEmitter<string>();
-  @Output() submit = new EventEmitter<string>();
 
   public device:string;
   public language:string;
@@ -24,6 +23,8 @@ export class AlarmFormComponent implements OnInit {
   public url:string;
   public count:number;
   public announcement:string;
+  invalid:any = {};
+  submitted = false;
 
   constructor(private alarmService: AlarmService) { }
 
@@ -35,12 +36,13 @@ export class AlarmFormComponent implements OnInit {
   }
 
   submitAlarm(){
+    this.submitted = true;
     if(this.validate()){
       var req = {
-        device: this.device,
+        deviceName: this.device,
         language: this.language,
-        daily: this.daily,
-        enable: this.enable,
+        daily: this.daily == "yes",
+        enable: this.enable == 'yes',
         date: this.date,
         time: this.time,
         text: this.text,
@@ -48,24 +50,43 @@ export class AlarmFormComponent implements OnInit {
         volume: this.volume,
         url: this.url,
         count: this.count,
-        announcement: this.announcement
+        announcement: this.announcement == 'yes',
+        createdBy: this.alarmService.email
       };
-      console.log(req);
       this.alarmService.submitAlarmToMicroService(req).pipe(first()).subscribe(res => console.log('res :' + res));
-      this.closePopup();
+      this.alarmService.addAlarm(req).subscribe(x => {
+        this.closePopup();
+      });
     }
   }
 
   validate(){
-    if(!this.device || this.device.trim() == '' || !this.language || this.language.trim() == '' ||
-    !this.daily || this.daily.trim() == '' || !this.enable || this.enable.trim() == '' ||
-    !this.date || this.date.trim() == '' || !this.time || this.time.trim() == '' ||
-    this.repetition == 0 || this.volume == 0 ||
-    !this.url || this.url.trim() == '' || this.count == 0 ||
-    !this.announcement || this.announcement.trim() == '')
-      return false;
-    else
-      return true;
+    // if(!this.device || this.device.trim() == '' || !this.language || this.language.trim() == '' ||
+    // !this.daily || this.daily.trim() == '' || !this.enable || this.enable.trim() == '' ||
+    // !this.date || this.date.trim() == '' || !this.time || this.time.trim() == '' ||
+    // this.repetition == 0 || this.volume == 0 ||
+    // !this.url || this.url.trim() == '' || this.count == 0 ||
+    // !this.announcement || this.announcement.trim() == '')
+    //   return false;
+    // else
+    //   return true;
+
+    this.invalid.device = (!this.device || this.device.trim() == '');
+    this.invalid.language = (!this.language || this.language.trim() == '');
+    this.invalid.daily = (!this.daily || this.daily.trim() == '');
+    this.invalid.enable = (!this.enable || this.enable.trim() == '');
+    this.invalid.date = (!this.date || this.date.trim() == '');
+    this.invalid.time = (!this.time || this.time.trim() == '');
+    this.invalid.repetition = (this.repetition == 0);
+    this.invalid.volume = (this.volume == 0);
+
+    return !(this.invalid.device || this.invalid.language || this.invalid.daily || this.invalid.enable ||
+      this.invalid.date || this.invalid.time || this.invalid.repetition || this.invalid.volume);
+
+  }
+
+  setDate(t){
+    console.log(t);
   }
 
 }

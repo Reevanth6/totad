@@ -12,7 +12,7 @@ namespace Persistance.Data.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DeviceName = table.Column<string>(nullable: true),
                     Language = table.Column<string>(nullable: true),
                     Daily = table.Column<bool>(nullable: false),
@@ -25,7 +25,7 @@ namespace Persistance.Data.Migrations
                     URL = table.Column<string>(nullable: true),
                     Count = table.Column<int>(nullable: false),
                     Announcement = table.Column<bool>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: true),
                     CreatedBy = table.Column<string>(nullable: true),
                     IP = table.Column<string>(nullable: true)
                 },
@@ -39,7 +39,7 @@ namespace Persistance.Data.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     EmailAddress = table.Column<string>(nullable: true),
                     EmployeeID = table.Column<int>(nullable: false),

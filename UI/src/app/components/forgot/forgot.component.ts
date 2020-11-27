@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlarmService } from 'src/app/service/alarm.service';
 
 @Component({
   selector: 'app-forgot',
@@ -9,23 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ForgotComponent implements OnInit {
 
-  forgotFormBuilder: FormGroup;
-  submitted = false;
+  email: string;
 
-  // tslint:disable-next-line: typedef
-  get loginForm() { return this.forgotFormBuilder.controls; }
-
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private alarmService: AlarmService) { }
 
   ngOnInit(): void {
-    this.forgotFormBuilder = this.formBuilder.group({
-      email: ['', [Validators.required]]
-    });
-    localStorage.removeItem('userInfo');
   }
 
   genratePassword(){
-    this.submitted = true;
+    this.alarmService.resetPassword(this.email).subscribe(x => {
+      this.router.navigate([ '/' ]);
+    });
   }
 
 }

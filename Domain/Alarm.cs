@@ -17,7 +17,7 @@ namespace Domain
         public int Count { get; set; }
         public bool Announcement { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public string IP { get; set; }
     }

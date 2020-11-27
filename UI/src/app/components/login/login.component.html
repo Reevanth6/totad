@@ -1,16 +1,18 @@
-<div id="container">
+<div id="container" *ngIf="!alarmService.validUser">
   <div id="formcontainer">
     <img class="img-logo" src="assets/images/Myntra_logo.png">
     <p id="text">LOG IN</p>
-    <form [formGroup]="loginForm" (submit)="login()">
+    <form>
       <div class="row">
         <div class="col-md-1 col-2">
           <i class="fa fa-user"></i>
         </div>
         <div class="col-md-11 col-10">
-          <input id="email" type="email" type="tel" formControlName="email" [ngClass]="{'invalid': submitted && loginForm.email.errors}" placeholder="Email" />
-          <div *ngIf="false && submitted && loginForm.email.errors" class="error-text">
-              <small *ngIf="loginForm.email.errors.required">Email</small>
+          <input id="email" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
+          [ngClass]="{'invalid': submitted && (emailEmpty || emailInvalid)}" placeholder="Email" />
+          <div *ngIf="(submitted && (emailEmpty || emailInvalid))" class="error-text">
+              <small *ngIf="emailEmpty">Email is required</small>
+              <small *ngIf="!emailEmpty && emailInvalid">Email is invalid</small>
           </div>
         </div>
       </div>
@@ -19,15 +21,19 @@
           <i class="fa fa-lock"></i>
         </div>
         <div class="col-md-11 col-10">
-          <input id="password" type="password" placeholder="Password"  formControlName="password" [ngClass]="{'invalid': submitted && loginForm.password.errors}" />
-          <div *ngIf="false && submitted && loginForm.password.errors" class="error-text">
-              <small *ngIf="loginForm.password.errors.required">Password is required</small>
+          <input id="password" type="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [ngClass]="{'invalid': submitted && passwordEmpty}" />
+          <div *ngIf="submitted && passwordEmpty" class="error-text">
+              <small>Password is required</small>
           </div>
         </div>
       </div>
-      <button id="login" type="submit" routerLink="/dashboard">Log In</button>
+      <button id="login" type="submit" (click)="login()">Log In</button>
+      <div *ngIf="submitted && !validateUser" class="text-center">
+        <small>Email/Password is invalid</small>
+    </div>
     </form>
     <div  routerLink="/forgot-password" id="forget">Forget Password ?</div>
     <div  routerLink="/sign-up" id="signup">Create Admin Account</div>
   </div>
 </div>
+<app-dashboard *ngIf="alarmService.validUser"></app-dashboard>

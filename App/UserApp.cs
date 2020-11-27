@@ -26,5 +26,15 @@ namespace App
             var user = _dbContext.Users.FirstOrDefault(x=>x.EmailAddress.Trim().ToLower() == email.Trim().ToLower());
             return user != null && user.Password == password;
         }
+
+        public void Reset(string email)
+        {
+            var user = _dbContext.Users.FirstOrDefault(x=>x.EmailAddress.Trim().ToLower() == email.Trim().ToLower());
+            if(user != null)
+            {
+                user.Password = "Password@123";
+                _dbContext.Commit();
+            }
+        }
     }
 }

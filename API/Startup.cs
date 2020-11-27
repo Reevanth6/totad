@@ -32,8 +32,8 @@ namespace API
             var conString = Configuration.GetConnectionString("core_connection");
             services.AddDbContext<CoreDBContext>(opt =>
             {
-                // opt.UseLazyLoadingProxies().UseSqlServer(conString);
-                opt.UseSqlite(conString);
+                opt.UseSqlServer(conString);
+                //opt.UseSqlite(conString);
             });
 
             services.AddScoped<ICoreDBContext,CoreDBContext>();

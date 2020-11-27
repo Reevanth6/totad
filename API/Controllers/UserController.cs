@@ -10,7 +10,6 @@ using Microsoft.Extensions.Logging;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
@@ -23,6 +22,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Route("[controller]")]
         public bool Get(string email,string password)
         {
             try{
@@ -35,6 +35,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Route("[controller]")]
         public int Post([FromBody]User user)
         {
             try{
@@ -43,6 +44,20 @@ namespace API.Controllers
             catch(Exception ex){
                 _logger.LogError(ex, "Failed in RegisterUser");
                 return 0;
+            }
+        }
+
+        [HttpPost]
+        [Route("[controller]/Reset")]
+        public void Reset(string email)
+        {
+            try
+            {
+                _userApp.Reset(email);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed in Reset");
             }
         }
     }

@@ -8,6 +8,7 @@ namespace App
         bool ValidateUser(string email, string password);
 
         int RegisterUser(User user);
+        void Reset(string email);
 
     }
 }

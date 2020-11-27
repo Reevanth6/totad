@@ -35,9 +35,26 @@ export class AlarmComponent implements OnInit {
       //   return `<i class="fa fa-trash cursor-pointer" (click)='delete(data.data.id)'></i>`;},
      cellRendererParams: { onClick: this.delete.bind(this),label:'click' }}
   ];
-    this.rowData = [{id:1, textData:'Thank you all for Support during sales time.',daily:'True',date:'20-10-24',time:'15:53',device:'Device1',volume:'100',playCount:'3',status:'True'},
-    {id:2, textData:'Thank you all for Support during sales time.',daily:'True',date:'20-10-24',time:'16:00',device:'Device1',volume:'100',playCount:'3',status:'True'},
-    {id:3, textData:'Good Morning',daily:'True',date:'20-10-28',time:'00:02',device:'Device1',volume:'100',playCount:'2',status:'True'}]
+    this.getPageDetails();
+    // this.rowData = [{id:1, textData:'Thank you all for Support during sales time.',daily:'True',date:'20-10-24',time:'15:53',device:'Device1',volume:'100',playCount:'3',status:'True'},
+    // {id:2, textData:'Thank you all for Support during sales time.',daily:'True',date:'20-10-24',time:'16:00',device:'Device1',volume:'100',playCount:'3',status:'True'},
+    // {id:3, textData:'Good Morning',daily:'True',date:'20-10-28',time:'00:02',device:'Device1',volume:'100',playCount:'2',status:'True'}]
+  }
+
+  getPageDetails(){
+    this.alarmService.getAlarms().subscribe(res => {
+      if (res && res.alarms){
+        this.rowData = res.alarms;
+        this.alarmService.ip = res.ip;
+      }
+      else {
+        this.rowData = [];
+      }
+    });
+  }
+
+  updateIp(){
+    this.alarmService.updateIp(this.alarmService.ip).subscribe(res => {});
   }
 
   delete(id){
@@ -62,10 +79,7 @@ export class AlarmComponent implements OnInit {
 
   closePopup(){
     this.type="";
-  }
-
-  save(){
-    this.type="";
+    this.getPageDetails();
   }
 
 }

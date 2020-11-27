@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [ApiController]
     public class AlarmController : ControllerBase
     {
         private readonly ILogger<AlarmController> _logger;
         private readonly IAlarmApp _alarmApp;
+        static string ip = "254.254.254.254";
 
         public AlarmController(ILogger<AlarmController> logger, IAlarmApp userApp)
         {
@@ -22,11 +24,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public List<Alarm> Get()
+        [Route("[controller]")]
+        public Object Get()
         {
             try
             {
-                return _alarmApp.GetAlarms();
+                return new
+                {
+                    Alarms = _alarmApp.GetAlarms(),
+                    ip = ip
+                };
             }
             catch (Exception ex)
             {
@@ -36,10 +43,13 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Route("[controller]")]
         public int Post([FromBody] Alarm alarm)
         {
             try
             {
+                alarm.IP = ip;
+                alarm.CreatedOn = DateTime.UtcNow;
                 return _alarmApp.AddAlarm(alarm);
             }
             catch (Exception ex)
@@ -47,6 +57,13 @@ namespace API.Controllers
                 _logger.LogError(ex, "Failed in Add Alarm");
                 return 0;
             }
+        }
+
+        [HttpPost]
+        [Route("[controller]/UpdateIp")]
+        public void UpdateIp(string newIp)
+        {
+            ip = newIp;
         }
     }
 }

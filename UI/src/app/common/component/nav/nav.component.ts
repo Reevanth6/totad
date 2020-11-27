@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlarmService } from 'src/app/service/alarm.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   selection:number = 1;
-  constructor() { }
+  constructor(public alarmService: AlarmService) { }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this.alarmService.validUser = false;
   }
 
 }
