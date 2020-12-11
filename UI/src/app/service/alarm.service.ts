@@ -8,7 +8,7 @@ import { alarmResponse } from '../model/alarm-response.model';
 })
 export class AlarmService {
   // public ip: string = '254.254.254.254';
-  public baseUrl:string = "https://localhost:44316";
+  public baseUrl:string =  "";//"https://localhost:44316";
 
   public validUser: boolean = false;
   public email: string;
