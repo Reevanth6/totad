@@ -48,8 +48,8 @@
       </div>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <div class="dropdown-header">Hello, {{alarmService.email}}</div>
-        <div class="dropdown-item" href="#"><i class="fa fa-home pr-1"></i>Manage Alarm</div>
-        <div class="dropdown-item" href="#"><i class="fa fa-gear pr-1"></i>Manage Clock Devices</div>
+        <div class="dropdown-item" (click)="showDashboard(true)"><i class="fa fa-home pr-1"></i>Manage Alarm</div>
+        <div class="dropdown-item" (click)="showDashboard(false)"><i class="fa fa-gear pr-1"></i>Create New Admin</div>
         <div class="dropdown-item" (click)="logout()"><i class="fa fa-power-off pr-1"></i>Logout</div>
       </div>
     </div>

@@ -29,11 +29,7 @@ namespace API.Controllers
         {
             try
             {
-                return new
-                {
-                    Alarms = _alarmApp.GetAlarms(),
-                    ip = ip
-                };
+                return _alarmApp.GetAlarms();
             }
             catch (Exception ex)
             {
@@ -59,11 +55,101 @@ namespace API.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("[controller]")]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                _alarmApp.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed in Delete alarm : " + id);
+                return null;
+            }
+        }
+
         [HttpPost]
         [Route("[controller]/UpdateIp")]
         public void UpdateIp(string newIp)
         {
             ip = newIp;
+        }
+
+        [HttpGet]
+        [Route("[controller]/getAlarm")]
+        public Object GetAlarm()
+        {
+            try
+            {
+                var alarm = _alarmApp.GetAlarm();
+                if (alarm == null)
+                    return null;
+                return new
+                {
+                    device= alarm.DeviceName ?? "",
+                    language = alarm.Language ?? "",
+                    daily = alarm.Daily,
+                    enable = alarm.Enable,
+                    date = alarm.Date ?? "",
+                    time = alarm.Time ?? "",
+                    text = alarm.Text ?? "",
+                    repetition = alarm.Repetition,
+                    announcement = alarm.Announcement
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed in ValidateUser");
+                return null;
+            }
+        }
+
+        [HttpGet]
+        [Route("[controller]/getAlarmById")]
+        public Object GetAlarmById(int id)
+        {
+            try
+            {
+                var alarm = _alarmApp.GetAlarmById(id);
+                if (alarm == null)
+                    return null;
+                return new
+                {
+                    device = alarm.DeviceName ?? "",
+                    language = alarm.Language ?? "",
+                    daily = alarm.Daily,
+                    enable = alarm.Enable,
+                    date = alarm.Date ?? "",
+                    time = alarm.Time ?? "",
+                    text = alarm.Text ?? "",
+                    repetition = alarm.Repetition,
+                    announcement = alarm.Announcement
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed in ValidateUser");
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("[controller]/deleteAll")]
+        public ActionResult DeleteAll()
+        {
+            try
+            {
+                _alarmApp.DeleteAll();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed in Delete all alarm");
+                return null;
+            }
         }
     }
 }

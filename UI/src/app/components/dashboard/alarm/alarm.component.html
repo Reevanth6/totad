@@ -2,17 +2,15 @@
   <div class="header my-1 row p-2 m-auto">
     <div class="white col-5">Manage Alarms</div>
     <div class="col-5 col-sm-7 float-right">
-      <div class="button float-right add-button text-right mr-2 cursor-pointer" (click)="add()">
+      <div title="Add New Alarm" class="button float-right add-button text-right mr-2 cursor-pointer" (click)="add()">
         <i class="fa fa-plus pr-1"></i>
-        <button class="white add-button">Add New Alarm</button>
       </div>
-      <!-- <div class="button float-right delete-button text-right mr-2 cursor-pointer" (click)="deleteAll()">
-        <i class="fa fa-trash pr-1"></i>
-        <button class="white delete-button">Delete All Alarms</button>
-      </div> -->
-      <div class="float-right mr-2">
+      <div title="Reset alarms" class="button float-right delete-button text-right mr-2 cursor-pointer" (click)="deleteAll()">
+        <i class="fa fa-refresh pr-1"></i>
+      </div>
+      <!-- <div class="float-right mr-2">
         <input type="text" class="form-control fs-6" id="ip" [(ngModel)]="alarmService.ip" placeholder="IP" (mouseout)="updateIp()">
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- <ag-grid-angular
@@ -27,38 +25,39 @@
     <table class="table">
       <thead>
         <tr>
+          <th class="" scope="col">ID</th>
           <th class="min-w-200" scope="col">Audio Text Data</th>
           <th scope="col">Daily</th>
           <th class="min-w-75" scope="col">Date</th>
           <th scope="col">Time</th>
           <th class="min-w-105" scope="col">Device Names</th>
-          <th class="min-w-135" scope="col">Current Volume Set</th>
-          <th class="min-w-165" scope="col">Number of Times to Play</th>
+          <!-- <th class="min-w-135" scope="col">Current Volume Set</th>
+          <th class="min-w-165" scope="col">Number of Times to Play</th> -->
           <th scope="col">Status</th>
-          <!-- <th scope="col">Edit</th>
-          <th scope="col">Duplicate</th>
-          <th scope="col">Delete</th> -->
+          <th scope="col">Edit</th>
+          <!-- <th scope="col">Duplicate</th> -->
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of rowData">
-          <!-- <td scope="row">1</td> -->
+          <td scope="row">{{data.id}}</td>
           <td scope="row">{{ data.text }}</td>
           <td>{{ data.daily ? 'True' : 'False' }}</td>
           <td>{{ data.date }}</td>
           <td>{{ data.time }}</td>
           <td>{{ data.deviceName }}</td>
-          <td>{{ data.volume }}</td>
-          <td>{{ data.count }}</td>
+          <!-- <td>{{ data.volume }}</td>
+          <td>{{ data.count }}</td> -->
           <td>True</td>
-          <!-- <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td>
-          <td class="text-center">
+          <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td>
+          <!-- <td class="text-center">
             <i class="fa fa-copy cursor-pointer" (click)="duplicate(data.id)"></i>
-          </td>
-          <td class="text-center"><i class="fa fa-trash cursor-pointer" (click)="delete(data.id)"></i></td> -->
+          </td> -->
+          <td class="text-center"><i class="fa fa-trash cursor-pointer" (click)="delete(data.id)"></i></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-<app-alarm-form *ngIf="type && type.trim() != ''" [type]="type" (close)="closePopup()"></app-alarm-form>
+<app-alarm-form *ngIf="type && type.trim() != ''" [type]="type" [editreq]="editReq" (close)="closePopup()"></app-alarm-form>

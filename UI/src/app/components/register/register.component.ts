@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     if(this.validate())
     {
       this.alarmService.register(this.user).subscribe(x => {
-        this.router.navigate([ '/' ]);
+        this.alarmService.showDashboard = true;
       });
     }
   }

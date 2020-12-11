@@ -3,15 +3,27 @@
         <div class="row header"><div class="col-12"><b>{{type}} Alarm</b></div></div>
         <div class="row p-3 body">
             <form>
+              <div class="row">
+                  <div class="col">
+                      <div class="form-group">
+                        <label for="anouncement">Live Anouncement</label>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="anouncement_yes" [(ngModel)]="announcement" [ngModelOptions]="{standalone: true}" value="yes" name="anouncement" class="custom-control-input">
+                          <label class="custom-control-label" for="anouncement_yes">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="anouncement_no" [(ngModel)]="announcement" [ngModelOptions]="{standalone: true}" value="no" name="anouncement" class="custom-control-input">
+                          <label class="custom-control-label" for="anouncement_no">No</label>
+                        </div>
+                      </div>
+                  </div>
+              </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="device">Device Name</label>
                           <select id="device" class="custom-select form-control" [(ngModel)]="device" [ngModelOptions]="{standalone: true}">
-                            <option selected>Device Name</option>
                             <option value="Device1">Device1</option>
-                            <option value="Device2">Device2</option>
-                            <option value="Device3">Device3</option>
                           </select>
                           <div *ngIf="submitted && invalid.device" class="error-text">
                             <small>Device is Required</small>
@@ -23,10 +35,9 @@
                         <div class="form-group">
                           <label for="language">Language</label>
                           <select id="language" class="custom-select form-control" [(ngModel)]="language" [ngModelOptions]="{standalone: true}">
-                            <option selected>Language</option>
                             <option value="English">English</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="French">French</option>
+                            <option value="Kannada">Kannada</option>
+                            <option value="Hindi">Hindi</option>
                           </select>
                           <div *ngIf="submitted && invalid.language" class="error-text">
                             <small>Language is Required</small>
@@ -34,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="announcement !='no'">
                     <div class="col">
                         <div class="form-group">
                           <label for="daily">Daily Alarm?</label>
@@ -68,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="announcement !='no'">
                     <div class="col">
                         <div class="form-group">
                           <label for="date">Date</label>
@@ -109,7 +120,7 @@
                           </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="volume">Volume</label>
@@ -120,8 +131,8 @@
                             <small>Volume can not be 0</small>
                           </div>
                     </div>
-                </div>
-                <div class="row">
+                </div> -->
+                <!-- <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="upload">Upload voice (OPTIONAL): MAX-SIZE: 4MB LIMIT</label>
@@ -130,11 +141,10 @@
                             <label class="custom-file-label" for="upload" aria-describedby="inputGroupFileAddon02">Choose file</label>
                           </div>
                           <span class="input-group-text float-left" id="upload">Upload</span>
-                          <!-- <input type="text" class="form-control" id="upload" placeholder="Device Name"> -->
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                </div> -->
+                <!-- <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="url">Play Music via URL(OPTIONAL)</label>
@@ -147,22 +157,7 @@
                           <input type="number" class="form-control" [(ngModel)]="count" [ngModelOptions]="{standalone: true}" id="play_time">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label for="anouncement">Live Anouncement(OPTIONAL)</label>
-                          <div class="custom-control custom-radio">
-                            <input type="radio" id="anouncement_yes" [(ngModel)]="announcement" [ngModelOptions]="{standalone: true}" value="yes" name="anouncement" class="custom-control-input">
-                            <label class="custom-control-label" for="anouncement_yes">Yes</label>
-                          </div>
-                          <div class="custom-control custom-radio">
-                            <input type="radio" id="anouncement_no" [(ngModel)]="announcement" [ngModelOptions]="{standalone: true}" value="no" name="anouncement" class="custom-control-input">
-                            <label class="custom-control-label" for="anouncement_no">No</label>
-                          </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
                 <div class="float-right">
                     <button type="button" class="btn btn-secondary mr-2" (click)="closePopup()">Cancel</button>
                     <button type="submit" class="btn btn-primary" (click)="submitAlarm()">Submit</button>

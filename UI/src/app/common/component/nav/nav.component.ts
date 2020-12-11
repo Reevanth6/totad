@@ -16,6 +16,11 @@ export class NavComponent implements OnInit {
 
   logout(){
     this.alarmService.validUser = false;
+    this.alarmService.showDashboard = true;
+  }
+
+  showDashboard(show: boolean){
+    this.alarmService.showDashboard = show;
   }
 
 }

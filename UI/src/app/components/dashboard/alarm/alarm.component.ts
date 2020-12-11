@@ -10,6 +10,7 @@ export class AlarmComponent implements OnInit {
   public columnDefs: any;
   public rowData: any[] = [];
   public type: string;
+  editReq: any;
 
 
   constructor(public alarmService:AlarmService) { }
@@ -43,9 +44,9 @@ export class AlarmComponent implements OnInit {
 
   getPageDetails(){
     this.alarmService.getAlarms().subscribe(res => {
-      if (res && res.alarms){
-        this.rowData = res.alarms;
-        this.alarmService.ip = res.ip;
+      if (res){
+        this.rowData = res;
+        // this.alarmService.ip = res.ip;
       }
       else {
         this.rowData = [];
@@ -54,15 +55,18 @@ export class AlarmComponent implements OnInit {
   }
 
   updateIp(){
-    this.alarmService.updateIp(this.alarmService.ip).subscribe(res => {});
+    // this.alarmService.updateIp(this.alarmService.ip).subscribe(res => {});
   }
 
   delete(id){
-    console.log('delete: ' + id);
+    this.alarmService.delete(id).subscribe(res => {
+      this.getPageDetails();
+    });
   }
 
   edit(id){
     this.type = "Edit";
+    this.editReq = this.rowData.find(x=>x.id == id);
   }
 
   duplicate(id){
@@ -74,7 +78,9 @@ export class AlarmComponent implements OnInit {
   }
 
   deleteAll(){
-    console.log('deleteAll');
+    this.alarmService.deleteAll().subscribe(res => {
+      this.getPageDetails();
+    });
   }
 
   closePopup(){
