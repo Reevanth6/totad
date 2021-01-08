@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { UtilityService } from './common/utility.service';
 
@@ -42,7 +43,8 @@ import { AlarmService } from './service/alarm.service';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    AgGridModule.withComponents(null)
+    AgGridModule.withComponents(null),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },

@@ -1,39 +1,51 @@
-<div id="container" *ngIf="!alarmService.validUser">
-  <div id="formcontainer">
-    <img class="img-logo" src="assets/images/Myntra_logo.png">
-    <p id="text">LOG IN</p>
-    <form>
-      <div class="row">
-        <div class="col-md-1 col-2">
-          <i class="fa fa-user"></i>
-        </div>
-        <div class="col-md-11 col-10">
-          <input id="email" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
-          [ngClass]="{'invalid': submitted && (emailEmpty || emailInvalid)}" placeholder="Email" />
-          <div *ngIf="(submitted && (emailEmpty || emailInvalid))" class="error-text">
-              <small *ngIf="emailEmpty">Email is required</small>
-              <small *ngIf="!emailEmpty && emailInvalid">Email is invalid</small>
-          </div>
-        </div>
+<app-dashboard *ngIf="alarmService.validUser"></app-dashboard>
+<div class="row login-container" *ngIf="!alarmService.validUser">
+  <div class="col-9 formcontainer">
+    <div id="header-details">
+      <div id="header-logo">
+        <img
+          alt="myntra-logo"
+          src="assets/images/Myntra_logo.png"
+        />
       </div>
-      <div class="row">
-        <div class="col-md-1 col-2">
-          <i class="fa fa-lock"></i>
-        </div>
-        <div class="col-md-11 col-10">
-          <input id="password" type="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [ngClass]="{'invalid': submitted && passwordEmpty}" />
-          <div *ngIf="submitted && passwordEmpty" class="error-text">
-              <small>Password is required</small>
-          </div>
-        </div>
-      </div>
-      <button id="login" type="submit" (click)="login()">Log In</button>
-      <div *ngIf="submitted && !validateUser" class="text-center">
-        <small>Email/Password is invalid</small>
+      <div id="merchant-name">Myntra Smart Clock</div>
     </div>
-    </form>
-    <div  routerLink="/forgot-password" id="forget">Forget Password ?</div>
-    <!-- <div  routerLink="/sign-up" id="signup">Create Admin Account</div> -->
+  </div>
+  <div class="col-3">
+
+    <div id="formcontainer">
+      <p id="text">LOG IN</p>
+      <form>
+        <div class="row">
+          <div class="col-md-1 col-2">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="col-md-11 col-10">
+            <input id="email" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
+            [ngClass]="{'invalid': submitted && (emailEmpty || emailInvalid)}" placeholder="Email" />
+            <div *ngIf="(submitted && (emailEmpty || emailInvalid))" class="error-text">
+                <small *ngIf="emailEmpty">Email is required</small>
+                <small *ngIf="!emailEmpty && emailInvalid">Email is invalid</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1 col-2">
+            <i class="fa fa-lock"></i>
+          </div>
+          <div class="col-md-11 col-10">
+            <input id="password" type="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [ngClass]="{'invalid': submitted && passwordEmpty}" />
+            <div *ngIf="submitted && passwordEmpty" class="error-text">
+                <small>Password is required</small>
+            </div>
+          </div>
+        </div>
+        <button id="login" type="submit" (click)="login()">Log In</button>
+        <div *ngIf="submitted && !validateUser" class="text-center">
+          <small>Email/Password is invalid</small>
+      </div>
+      </form>
+      <div  routerLink="/forgot-password" id="forget">Forget Password ?</div>
+    </div>
   </div>
 </div>
-<app-dashboard *ngIf="alarmService.validUser"></app-dashboard>

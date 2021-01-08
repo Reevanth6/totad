@@ -31,10 +31,11 @@
           <th class="min-w-75" scope="col">Date</th>
           <th scope="col">Time</th>
           <th class="min-w-105" scope="col">Device Names</th>
+          <th class="min-w-105" scope="col">Language</th>
           <!-- <th class="min-w-135" scope="col">Current Volume Set</th>
           <th class="min-w-165" scope="col">Number of Times to Play</th> -->
           <th scope="col">Status</th>
-          <th scope="col">Edit</th>
+          <!-- <th scope="col">Edit</th> -->
           <!-- <th scope="col">Duplicate</th> -->
           <th scope="col">Delete</th>
         </tr>
@@ -47,10 +48,11 @@
           <td>{{ data.date }}</td>
           <td>{{ data.time }}</td>
           <td>{{ data.deviceName }}</td>
+          <td>{{ data.language }}</td>
           <!-- <td>{{ data.volume }}</td>
           <td>{{ data.count }}</td> -->
           <td>True</td>
-          <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td>
+          <!-- <td class="text-center"><i class="fa fa-edit cursor-pointer" (click)="edit(data.id)"></i></td> -->
           <!-- <td class="text-center">
             <i class="fa fa-copy cursor-pointer" (click)="duplicate(data.id)"></i>
           </td> -->

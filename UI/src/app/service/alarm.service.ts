@@ -9,6 +9,9 @@ import { alarmResponse } from '../model/alarm-response.model';
 export class AlarmService {
   // public ip: string = '254.254.254.254';
   public baseUrl:string =  "";//"https://localhost:44316";
+  //Cloudinary
+  uploadPreset = "test_image";
+  cloudName = "dk49qi94q";
 
   public validUser: boolean = false;
   public email: string;
@@ -74,6 +77,13 @@ export class AlarmService {
     }));
   }
 
+
+
+  cloudinaryUpload(data){
+    return this.http.post<any>('https://api.cloudinary.com/v1_1/' + this.cloudName + '/upload', data , {}).pipe(map(response => {
+      return response;
+    }));
+  }
 
   validateEmail(email){
     return (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email));

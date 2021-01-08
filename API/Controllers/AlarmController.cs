@@ -33,7 +33,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed in ValidateUser");
+                _logger.LogError(ex, "Failed in Get");
                 return null;
             }
         }
@@ -89,7 +89,8 @@ namespace API.Controllers
                     return null;
                 return new
                 {
-                    device= alarm.DeviceName ?? "",
+                    id = alarm.ID,
+                    device = !string.IsNullOrWhiteSpace(alarm?.DeviceName) ? alarm.DeviceName.Split('|').ToList() : null,
                     language = alarm.Language ?? "",
                     daily = alarm.Daily,
                     enable = alarm.Enable,
@@ -97,7 +98,10 @@ namespace API.Controllers
                     time = alarm.Time ?? "",
                     text = alarm.Text ?? "",
                     repetition = alarm.Repetition,
-                    announcement = alarm.Announcement
+                    announcement = alarm.Announcement,
+                    mp3Url = alarm.Mp3Url,
+                    volume= alarm.Volume,
+                    url= alarm.URL
                 };
             }
             catch (Exception ex)
@@ -118,7 +122,8 @@ namespace API.Controllers
                     return null;
                 return new
                 {
-                    device = alarm.DeviceName ?? "",
+                    id = alarm.ID,
+                    device = !string.IsNullOrWhiteSpace(alarm?.DeviceName) ? alarm.DeviceName.Split('|').ToList() : null,
                     language = alarm.Language ?? "",
                     daily = alarm.Daily,
                     enable = alarm.Enable,
@@ -126,7 +131,10 @@ namespace API.Controllers
                     time = alarm.Time ?? "",
                     text = alarm.Text ?? "",
                     repetition = alarm.Repetition,
-                    announcement = alarm.Announcement
+                    announcement = alarm.Announcement,
+                    mp3Url = alarm.Mp3Url,
+                    volume = alarm.Volume,
+                    url = alarm.URL
                 };
             }
             catch (Exception ex)

@@ -14,6 +14,7 @@ namespace Domain
         public int Repetition { get; set; }
         public int Volume { get; set; }
         public string URL { get; set; }
+        public string Mp3Url { get; set; }
         public int Count { get; set; }
         public bool Announcement { get; set; }
 

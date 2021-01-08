@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LoginComponent, pathMatch: 'full' },
   { path: 'forgot-password', component: ForgotComponent, pathMatch: 'full' },
-  // { path: 'sign-up', component: RegisterComponent, pathMatch: 'full' },
+  { path: 'sign-up', component: RegisterComponent, pathMatch: 'full' },
   // { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
   // { path: 'home', component: HomeComponent, data: { title: 'home' }},
   // { path: 'about', component: AboutComponent},

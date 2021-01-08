@@ -30,6 +30,7 @@ namespace App
                 dbAlarm.Time = alarm.Time;
                 dbAlarm.Text = alarm.Text;
                 dbAlarm.Repetition = alarm.Repetition;
+                dbAlarm.Mp3Url = alarm.Mp3Url;
                 dbAlarm.Announcement = alarm.Announcement;
             }
             _dbContext.Commit();

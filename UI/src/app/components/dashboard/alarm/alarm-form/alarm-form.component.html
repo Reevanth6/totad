@@ -22,9 +22,17 @@
                     <div class="col">
                         <div class="form-group">
                           <label for="device">Device Name</label>
-                          <select id="device" class="custom-select form-control" [(ngModel)]="device" [ngModelOptions]="{standalone: true}">
+                          <!-- <select id="device" class="custom-select form-control" [(ngModel)]="device" [ngModelOptions]="{standalone: true}">
                             <option value="Device1">Device1</option>
-                          </select>
+                          </select> -->
+                          <ng-multiselect-dropdown
+                            placeholder="Devices"
+                            [data]="deviceList"
+                            [(ngModel)]="device"
+                            [settings]="dropdownSettings"
+                            [ngModelOptions]="{standalone: true}"
+                          >
+                          </ng-multiselect-dropdown>
                           <div *ngIf="submitted && invalid.device" class="error-text">
                             <small>Device is Required</small>
                         </div>
@@ -45,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" *ngIf="announcement !='no'">
+                <div class="row" *ngIf="announcement =='no'">
                     <div class="col">
                         <div class="form-group">
                           <label for="daily">Daily Alarm?</label>
@@ -79,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" *ngIf="announcement !='no'">
+                <div class="row" *ngIf="announcement =='no'">
                     <div class="col">
                         <div class="form-group">
                           <label for="date">Date</label>
@@ -113,14 +121,14 @@
                     <div class="col">
                         <div class="form-group">
                           <label for="repetition">No. of Repetition Announcements</label>
-                          <input type="number" class="form-control" [(ngModel)]="repetition" [ngModelOptions]="{standalone: true}" id="repetition">
+                          <input type="number" class="form-control" min=0 [(ngModel)]="repetition" [ngModelOptions]="{standalone: true}" id="repetition">
                         </div>
                           <div *ngIf="submitted && invalid.repetition" class="error-text">
                             <small>Repetition is required</small>
                           </div>
                     </div>
                 </div>
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="volume">Volume</label>
@@ -131,36 +139,46 @@
                             <small>Volume can not be 0</small>
                           </div>
                     </div>
-                </div> -->
-                <!-- <div class="row">
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="upload">Upload voice (OPTIONAL): MAX-SIZE: 4MB LIMIT</label>
-                          <div class="custom-file float-left">
-                            <input type="file" class="custom-file-input" id="upload">
-                            <label class="custom-file-label" for="upload" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                          <div class="custom-file">
+                            <input type="file"
+                            #disabilityFile
+                            (change)="uploadAudio($event)"
+                            accept="audio/*" class="custom-file-input" id="upload"
+                            [disabled]="loading">
+                            <label class="custom-file-label" for="upload" aria-describedby="inputGroupFileAddon02">Choose file<i class="fa fa-spinner fa-spin" *ngIf="loading"></i></label>
                           </div>
-                          <span class="input-group-text float-left" id="upload">Upload</span>
+                          <!-- <span class="input-group-text float-left" id="upload">Upload</span> -->
+                        </div>
+                        <div *ngIf="mp3Url" class="audio">
+                          <audio controls>
+                            <source [src]="mp3Url" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                          </audio>
                         </div>
                     </div>
-                </div> -->
-                <!-- <div class="row">
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label for="url">Play Music via URL(OPTIONAL)</label>
                           <input type="text" class="form-control" [(ngModel)]="url" [ngModelOptions]="{standalone: true}" id="url" placeholder="URL">
                         </div>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <div class="form-group">
                           <label for="play_time">How much time music needs to play?(In Mins)(OPTIONAL)</label>
                           <input type="number" class="form-control" [(ngModel)]="count" [ngModelOptions]="{standalone: true}" id="play_time">
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
+                </div>
                 <div class="float-right">
                     <button type="button" class="btn btn-secondary mr-2" (click)="closePopup()">Cancel</button>
-                    <button type="submit" class="btn btn-primary" (click)="submitAlarm()">Submit</button>
+                    <button type="submit" [disabled]="loading" class="btn btn-primary" (click)="submitAlarm()">Submit</button>
                 </div>
               </form>
         </div>
