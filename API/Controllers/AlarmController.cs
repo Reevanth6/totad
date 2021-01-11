@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,7 +30,9 @@ namespace API.Controllers
         {
             try
             {
-                return _alarmApp.GetAlarms();
+                var res = _alarmApp.GetAlarms();
+                res.ForEach(x => x.Time = convertTime(x.Time));
+                return res;
             }
             catch (Exception ex)
             {
@@ -95,7 +98,7 @@ namespace API.Controllers
                     daily = alarm.Daily,
                     enable = alarm.Enable,
                     date = alarm.Date ?? "",
-                    time = alarm.Time ?? "",
+                    time = convertTime(alarm.Time) ?? "",
                     text = alarm.Text ?? "",
                     repetition = alarm.Repetition,
                     announcement = alarm.Announcement,
@@ -128,7 +131,7 @@ namespace API.Controllers
                     daily = alarm.Daily,
                     enable = alarm.Enable,
                     date = alarm.Date ?? "",
-                    time = alarm.Time ?? "",
+                    time = convertTime(alarm.Time) ?? "",
                     text = alarm.Text ?? "",
                     repetition = alarm.Repetition,
                     announcement = alarm.Announcement,
@@ -159,5 +162,14 @@ namespace API.Controllers
                 return null;
             }
         }
+
+        string convertTime(string str)
+        {
+            DateTime date;
+            if(DateTime.TryParseExact(str, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out date))
+                return date.ToString("hh:mm tt");
+            return null;
+        }
+
     }
 }

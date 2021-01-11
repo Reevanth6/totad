@@ -10,8 +10,8 @@ export class AlarmService {
   // public ip: string = '254.254.254.254';
   public baseUrl:string =  "";//"https://localhost:44316";
   //Cloudinary
-  uploadPreset = "test_image";
-  cloudName = "dk49qi94q";
+  uploadPreset = "smartmp3";
+  cloudName = "myntrasmartclock";
 
   public validUser: boolean = false;
   public email: string;
